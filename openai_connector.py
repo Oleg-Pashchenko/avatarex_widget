@@ -8,7 +8,7 @@ from openai import OpenAI
 def prompt_request(messages: list[dict], settings: AvatarexSettings) -> (str | None):
     try:
         client = OpenAI()
-        messages.insert(0, {'role': 'system', 'context': settings.context})
+        messages.insert(0, {'role': 'system', 'content': settings.context})
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=messages
