@@ -14,7 +14,8 @@ def prompt_request(messages: list[dict], settings: AvatarexSettings) -> (str | N
             messages=messages
         )
         return response.choices[0].message.content
-    except:
+    except Exception as e:
+        print(e)
         return None
 
 
@@ -26,7 +27,8 @@ def knowledge_request(messages: list[dict], settings: AvatarexSettings) -> (str 
         if not response['is_ok'] or len(response['args']) == 0 or len(response['args']) > 5:
             return None
         return get_answer_by_question(response, filename)
-    except:
+    except Exception as e:
+        print(e)
         return None
 
 
