@@ -103,7 +103,7 @@ def get_keywords_values(message, func):
             {"role": "user",
              "content": message}]
 
-        response = client.chat.completions.create(model="gpt-4-32k",
+        response = client.chat.completions.create(model="gpt-3.5-turbo",
                                                   messages=messages,
                                                   functions=func,
                                                   function_call={"name": "get_question_by_context"})

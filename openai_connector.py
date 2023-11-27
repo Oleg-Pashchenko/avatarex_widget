@@ -10,7 +10,7 @@ def prompt_request(messages: list[dict], settings: AvatarexSettings) -> (str | N
         client = OpenAI()
         messages.insert(0, {'role': 'system', 'context': settings.context})
         response = client.chat.completions.create(
-            model="gpt-4-32k",
+            model="gpt-3.5-turbo",
             messages=messages
         )
         return response.choices[0].message.content
