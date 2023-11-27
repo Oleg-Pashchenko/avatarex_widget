@@ -36,7 +36,8 @@ def knowledge_request(messages: list[dict], settings: AvatarexSettings) -> (str 
 def knowledge_mode(messages: list[dict]):
     try:
         avatarex_settings = read_avatarex_settings()
-    except:
+    except Exception as e:
+        print(e)
         return "Ошибка подключения к базе данных!"
     os.environ["OPENAI_API_KEY"] = avatarex_settings.api_token
     try:
