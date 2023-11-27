@@ -1,9 +1,13 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 @app.route('/', methods=['GET', 'POST'])
+@cross_origin()
 def main():
     post_params = request.form.to_dict()
     return {'answer': str(post_params)}
