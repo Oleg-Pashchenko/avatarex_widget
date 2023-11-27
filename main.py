@@ -12,7 +12,8 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @cross_origin()
 def main():
     post_params = request.get_json()
-    return {'answer': openai_connector.knowledge_mode(post_params['messages'])}
+    print(post_params)
+    return {'answer': openai_connector.knowledge_mode(post_params)}
 
 
 if __name__ == '__main__':

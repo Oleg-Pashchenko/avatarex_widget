@@ -389,3 +389,7 @@
 {"ts":1701124749014,"action":"FILE_OPENED","file":"/misc.py","tags":{"FILE_LINE_OF_CODE":"125"}}
 {"ts":1701124773901,"action":"FILE_CLOSED","file":"/misc.py","tags":{"FILE_LINE_OF_CODE":"136"}}
 {"ts":1701124773901,"action":"FILE_OPENED","file":"/openai_connector.py","tags":{"FILE_LINE_OF_CODE":"47"}}
+{"ts":1701124791195,"action":"IDE_DEACTIVATED"}
+{"ts":1701124841833,"action":"IDE_ACTIVATED"}
+{"ts":1701124843528,"action":"FILE_CLOSED","file":"/openai_connector.py","tags":{"FILE_LINE_OF_CODE":"48"}}
+{"ts":1701124843528,"action":"FILE_OPENED","file":"/main.py","tags":{"FILE_LINE_OF_CODE":"20"}}
