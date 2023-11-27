@@ -38,10 +38,13 @@ def knowledge_mode(messages: list[dict]):
     os.environ["OPENAI_API_KEY"] = avatarex_settings.api_token
     try:
         answer = knowledge_request(messages, avatarex_settings)
+        print("KR", answer)
         if answer is None:
             answer = prompt_request(messages, avatarex_settings)
+            print('PR', answer)
             if answer is None:
                 answer = avatarex_settings.error_message
         return answer
-    except:
+    except Exception as e:
+        print('All exc', e)
         return avatarex_settings.error_message
