@@ -9,7 +9,8 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route('/', methods=['GET', 'POST'])
 @cross_origin()
 def main():
-    post_params = request.form.to_dict()
+    post_params = request.get_json()
+    print(post_params)
     return {'answer': str(post_params)}
 
 
