@@ -24,9 +24,21 @@ DB_PORT = os.getenv("DB_PORT")
 DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 engine = create_engine(DATABASE_URL)
+
 metadata = MetaData()
+avatarexsettings = Table(
+    'home_avatarexsettings', metadata,
+    Column('id', Integer, primary_key=True),
+    Column('knowledge_link', String),
+    Column('context', String),
+    Column('api_token', String),
+    Column('error_message', String),
+)
+
+# Создаем сессию
 Session = sessionmaker(bind=engine)
 session = Session()
+
 
 
 @dataclass()
@@ -60,15 +72,6 @@ def get_execution_function(filename):
 
 
 def read_avatarex_settings() -> AvatarexSettings:
-    avatarexsettings = Table(
-        'home_avatarexsettings', metadata,
-        Column('id', Integer, primary_key=True),
-        Column('knowledge_link', String),
-        Column('context', String),
-        Column('api_token', String),
-        Column('error_message', String),
-    )
-
     # Read data from the table where id = 2
     result = session.query(avatarexsettings).filter(avatarexsettings.c.id == 2).first()
     return AvatarexSettings(
@@ -77,7 +80,6 @@ def read_avatarex_settings() -> AvatarexSettings:
         api_token=result.api_token,
         error_message=result.error_message
     )
-
 
 def download_file(db_name):
     file_id = db_name.replace('https://docs.google.com/spreadsheets/d/', '')
