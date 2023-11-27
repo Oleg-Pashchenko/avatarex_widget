@@ -1,6 +1,7 @@
 import os
 
-from misc import AvatarexSettings, read_avatarex_settings
+from misc import AvatarexSettings, read_avatarex_settings, get_execution_function, download_file, get_keywords_values, \
+    get_answer_by_question
 from openai import OpenAI
 
 
@@ -18,7 +19,15 @@ def prompt_request(messages: list[dict], settings: AvatarexSettings) -> (str | N
 
 
 def knowledge_request(messages: list[dict], settings: AvatarexSettings) -> (str | None):
-    return None
+    try:
+        filename = download_file(settings.knowledge_link)
+        func = get_execution_function(filename)
+        response = get_keywords_values(messages[-1]['content'], func)
+        if not response['is_ok'] or len(response['args']) == 0 or len(response['args']) > 5:
+            return None
+        return get_answer_by_question(response, filename)
+    except:
+        return None
 
 
 def knowledge_mode(messages: list[dict]):
