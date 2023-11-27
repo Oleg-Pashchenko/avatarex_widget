@@ -26,6 +26,7 @@ def knowledge_request(messages: list[dict], settings: AvatarexSettings) -> (str 
         response = get_keywords_values(messages[-1]['content'], func)
         if not response['is_ok'] or len(response['args']) == 0 or len(response['args']) > 5:
             return None
+        response = response['args'][0]
         return get_answer_by_question(response, filename)
     except Exception as e:
         print(e)
