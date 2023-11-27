@@ -43,10 +43,10 @@ def knowledge_mode(messages: list[dict]):
     try:
         answer = knowledge_request(messages, avatarex_settings)
         print("KR", answer)
-        if answer is None:
+        if answer is None or answer == '':
             answer = prompt_request(messages, avatarex_settings)
             print('PR', answer)
-            if answer is None:
+            if answer is None or answer == '':
                 answer = avatarex_settings.error_message
         return answer
     except Exception as e:
