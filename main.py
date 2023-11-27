@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 
+import openai_connector
+
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -10,8 +12,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @cross_origin()
 def main():
     post_params = request.get_json()
-    print(post_params)
-    return {'answer': str(post_params)}
+    return {'answer': openai_connector.knowledge_mode(post_params['messages'])}
 
 
 if __name__ == '__main__':
