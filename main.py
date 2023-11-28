@@ -16,7 +16,7 @@ def main():
 
     # Set Access-Control-Allow-Headers in the response headers
     response_headers = {
-        'Access-Control-Allow-Headers': 'Content-Type, Accept, Accept-Language, Content-Language, X-Your-Additional-Header',
+        'Access-Control-Allow-Headers': 'content-type, Accept, Accept-Language, Content-Language, X-Your-Additional-Header',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'POST',
     }
