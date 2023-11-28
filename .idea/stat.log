@@ -629,3 +629,8 @@
 {"ts":1701129843618,"action":"IDE_ACTIVATED"}
 {"ts":1701129851966,"action":"FILE_CLOSED","file":"/openai_connector.py","tags":{"FILE_LINE_OF_CODE":"55"}}
 {"ts":1701129851966,"action":"FILE_OPENED","file":"/main.py","tags":{"FILE_LINE_OF_CODE":"22"}}
+{"ts":1701129864875,"action":"IDE_DEACTIVATED"}
+{"ts":1701129883637,"action":"IDE_ACTIVATED"}
+{"ts":1701129893832,"action":"IDE_DEACTIVATED"}
+{"ts":1701129975571,"action":"IDE_ACTIVATED"}
+{"ts":1701129979183,"action":"IDE_DEACTIVATED"}
