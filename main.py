@@ -15,13 +15,11 @@ def main():
     response = {'answer': openai_connector.knowledge_mode(post_params['messages'])}
 
     # Set Access-Control-Allow-Headers in the response headers
-    response_headers = {
-        'Access-Control-Allow-Headers': 'content-type, Accept, Accept-Language, Content-Language, X-Your-Additional-Header',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST',
-    }
 
-    return jsonify(response), 200, response_headers
+    resp = jsonify(response)
+    resp.headers.add('Access-Control-Allow-Origin', '*')
+    return resp
+
 
 
 if __name__ == '__main__':
