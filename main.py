@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 import openai_connector
 
 app = Flask(__name__)
-cors = CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*", "headers": "Content-Type"}})
+cors = CORS(app, resources={r"/*": {"origins": "*", "headers": "Content-Type, X-Requested-With, X-Your-Additional-Header"}})
 
 @app.route('/', methods=['POST'])
 @cross_origin()
