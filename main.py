@@ -6,6 +6,7 @@ import openai_connector
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
+
 @app.route('/', methods=['POST'])
 def main():
     post_params = request.get_json()
@@ -14,15 +15,15 @@ def main():
 
     # Flask-CORS will handle CORS headers, so you don't need to add them manually
 
+    return jsonify(response)
 
-    response_headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Credentials': 'true',
-    }
 
-    return jsonify(response), 200, response_headers
+@app.after_request
+def add_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    return response
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', threaded=True, port=8083, debug=True)
