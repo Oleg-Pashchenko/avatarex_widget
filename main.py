@@ -6,7 +6,7 @@ import openai_connector
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['OPTIONS', 'POST'])
 def main():
     post_params = request.get_json()
     print(post_params)
