@@ -8,7 +8,7 @@ CORS(app, supports_credentials=True)
 
 
 @app.route('/', methods=['POST'])
-@cross_origin()
+@cross_origin(supports_credentials=True)
 def main():
     post_params = request.get_json()
     print(post_params)
@@ -17,7 +17,7 @@ def main():
     # Set Access-Control-Allow-Headers in the response headers
 
     resp = jsonify(response)
-    resp.headers.add('Access-Control-Allow-Origin', '*')
+    # resp.headers.add('Access-Control-Allow-Origin', '*')
     return resp
 
 
