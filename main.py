@@ -5,6 +5,7 @@ import openai_connector
 
 app = Flask(__name__)
 cors = CORS(app)
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://95.140.146.86"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
