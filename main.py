@@ -26,4 +26,4 @@ def add_headers(response):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', ssl_context='adhoc', threaded=True, port=8083, debug=True)
+    app.run(host='0.0.0.0', ssl_context=('cert.pem', 'key.pem'), threaded=True, port=8083, debug=True)
