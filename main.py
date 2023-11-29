@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/widget-api', methods=['POST'])
 def main():
     print('yes')
-    post_params = request.data
+    post_params = request.json
     print(post_params)
     response = {'answer': openai_connector.knowledge_mode(post_params['messages'])}
     return jsonify(response)
